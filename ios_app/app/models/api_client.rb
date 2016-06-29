@@ -1,7 +1,7 @@
 class ApiClient
   class << self
     def client
-      @client ||= AFMotion::SessionClient.build("http://localhost:3000/api/v1") do
+      @client ||= AFMotion::SessionClient.build("http://localhost:3000/auth/sign_in") do
         response_serializer :json
       end
     end
