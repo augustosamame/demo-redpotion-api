@@ -18,7 +18,7 @@ class AppDelegate < PM::Delegate
   end
 
   def open_authenticated_root
-    open_tab_bar MemesScreen.new(nav_bar: true), MemeTemplatesScreen.new(nav_bar: true)
+    open_tab_bar MatchesScreen.new(nav_bar: true), MatchTemplatesScreen.new(nav_bar: true)
   end
 
   # Remove this if you are only supporting portrait

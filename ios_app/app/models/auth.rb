@@ -1,4 +1,5 @@
 class Auth < Motion::Authentication
-  strategy DeviseTokenAuth
-  sign_in_url "http://localhost:3000/api/v1/users/sign_in"
+  strategy DeviseTokenAuthGem
+  sign_in_url "http://localhost:3000/auth/sign_in"
+  sign_up_url "http://localhost:3000/auth/sign_up"
 end

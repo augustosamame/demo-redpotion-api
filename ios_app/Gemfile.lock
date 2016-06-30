@@ -1,3 +1,10 @@
+PATH
+  remote: ~/workspace/motion-authentication
+  specs:
+    motion-authentication (1.0.0)
+      motion-cocoapods
+      motion-keychain
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,9 +71,6 @@ GEM
       bundler
     minitest (5.8.4)
     molinillo (0.4.5)
-    motion-authentication (1.0.0)
-      motion-cocoapods
-      motion-keychain
     motion-cocoapods (1.8.0.beta.4)
       cocoapods (>= 1.0.0.beta.7)
     motion-keychain (0.0.1)
@@ -108,7 +112,7 @@ DEPENDENCIES
   ProMotion-XLForm
   afmotion
   cdq
-  motion-authentication
+  motion-authentication!
   motion-cocoapods (= 1.8.0.beta.4)
   motion-yaml (= 1.4)
   newclear

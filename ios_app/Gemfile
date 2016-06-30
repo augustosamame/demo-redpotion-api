@@ -7,7 +7,7 @@ gem "cdq" # Core Data
 gem "motion-yaml", "1.4" # Version 1.5 breaks CDQ
 gem "afmotion" # Networking
 
-gem "motion-authentication"
+gem "motion-authentication", :path => "~/workspace/motion-authentication"
 
 # Debugging tools
 gem "newclear" # Completely wipe out the simulator and rebuild
