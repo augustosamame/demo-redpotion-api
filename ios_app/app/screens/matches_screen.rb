@@ -3,15 +3,11 @@ class MatchesScreen < PM::Screen
   stylesheet MatchesScreenStylesheet
 
   def on_load
-    mp "now running on_load Matches"
-    mp Auth.signed_in?
-    mp Auth.current_user
-    set_nav_bar_button :right, title: "Sign Out", action: :sign_out
-    set_nav_bar_button :left, title: (Auth.current_user ? Auth.current_user["email"] : "")
+    set_nav_bar_button :left, title: "Sign Out", action: :sign_out
+    set_nav_bar_button :right, title: (Auth.current_user ? Auth.current_user["email"] : "")
     append(UIButton, :new_match_button).layout(l: 30, t: 80, w: 120, h: 30).on(:tap) do |sender|
       create_new_match
     end
-    mp "about to load matches"
     get_user_matches
   end
 
@@ -32,10 +28,9 @@ class MatchesScreen < PM::Screen
     mp "first line of load new match"
     Match.create(player2_id: "random", match_type: "Duel") do |response, newmatch|
       if response.success?
-        @newmatch = newmatch
-        mp @newmatch 
+        open PlayRoundScreen.new(nav_bar: true, match: newmatch)
       else
-        app.alert "Sorry, there was an error fetching the matches."
+        app.alert "Sorry, there was an error creating the new match."
         mp response.error.localizedDescription
       end
     end
