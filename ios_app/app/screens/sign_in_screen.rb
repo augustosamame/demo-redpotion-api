@@ -36,10 +36,14 @@ class SignInScreen < PM::XLFormScreen
   def authenticate
     Auth.sign_in(email: values["email"], password: values["password"]) do |response|
       if response.success?
+        # Auth.current_user = User.new(response.object["data"])
         ApiClient.update_authorization_header(Auth.authorization_header)
+        Auth.current_user = Auth.set_current_user
         app.delegate.open_authenticated_root
       elsif response.object
-        app.alert response.object["error"]
+        mp response.object
+        mp response.error
+        app.alert response.object["errors"].nil? ? 'Unknown error' : response.object["errors"][0]
       else
         app.alert "Sorry, there was an error. #{response.error.localizedDescription}"
       end

@@ -7,6 +7,13 @@ class MatchesScreenStylesheet < ApplicationStylesheet
     # Add application specific setup stuff in application_stylesheet.rb
   end
 
+  def new_match_button(st)
+    st.background_color = color.black
+    st.color = color.white
+    st.enabled = true
+    st.text = "New Match"
+  end
+
   def root_view(st)
     st.background_color = color.white
   end
