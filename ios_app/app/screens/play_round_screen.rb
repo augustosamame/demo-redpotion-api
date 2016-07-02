@@ -1,16 +1,12 @@
 class PlayRoundScreen < PM::Screen
-  title "Let's Play!"
+  title "Now Playing"
   stylesheet PlayRoundScreenStylesheet
-  attr_accessor
-
-  def initialize(match)
-    mp match.id
-  end
 
   def on_load
     set_nav_bar_button :left, title: "Exit Match", action: :exit_match
     set_nav_bar_button :right, title: (Auth.current_user ? Auth.current_user["email"] : "")
-    append(UIButton, :new_round_button).layout(l: 30, t: 80, w: 120, h: 30).on(:tap) do |sender|
+    append(UIButton, :start_play_button).on(:tap) do |sender|
+      mp "start round of match "
       start_round
     end
   end
@@ -24,6 +20,25 @@ class PlayRoundScreen < PM::Screen
   def start_round
     mp "starting round"
     mp "create new round"
+
+    @background_image = append!(UIImageView, :background_image)
+    @face_image = append!(UIImageView, :face_image)
+    rmq(:face_image).hide
+    @star1_image = append!(UIImageView, :star1_image)
+    @star2_image = append!(UIImageView, :star2_image)
+    @star3_image = append!(UIImageView, :star3_image)
+    @star4_image = append!(UIImageView, :star4_image)
+    append(UIButton, :duel_button).on(:tap) do |sender|
+      mp "start duel game " + @match.id.to_s
+      start_duel_game
+    end
+    append(UIButton, :standard_button).on(:tap) do |sender|
+      mp "start standard game " + @match.id.to_s
+      start_standard_game
+    end
+    append(UILabel, :ready)
+    append(UILabel, :set)
+    append(UILabel, :go)
 
   end
 

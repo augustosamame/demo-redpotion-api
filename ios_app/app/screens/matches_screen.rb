@@ -28,7 +28,7 @@ class MatchesScreen < PM::Screen
     mp "first line of load new match"
     Match.create(player2_id: "random", match_type: "Duel") do |response, newmatch|
       if response.success?
-        open PlayRoundScreen.new(nav_bar: true, match: newmatch)
+        open PreRoundScreen.new(nav_bar: true, match: newmatch)
       else
         app.alert "Sorry, there was an error creating the new match."
         mp response.error.localizedDescription

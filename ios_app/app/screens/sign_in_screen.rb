@@ -1,5 +1,5 @@
 class SignInScreen < PM::XLFormScreen
-  title "Sign In"
+  title "Faces - Sign In"
   stylesheet SignInScreenStylesheet
 
   def form_data
@@ -21,7 +21,7 @@ class SignInScreen < PM::XLFormScreen
             required:    true
           },
           {
-            title: 'Sign In',
+            title: 'Faces - Sign In',
             name: :save,
             type: :button,
             on_click: -> (cell) {
